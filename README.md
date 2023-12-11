@@ -12,7 +12,7 @@
 
 ```bash
 pip install clickhouse-django-logger  # Установка стабильной версии
-pip install -U git+https://github.com/Sobolev5/django-clickhouse-logger.git@master  # Установка версии разработки
+pip install -U git+https://github.com/single-service/clickhouse_django_logger.git@master  # Установка версии разработки
 ```
 Добавьте clickhouse_django_logger в INSTALLED_APPS:
 ```bash
