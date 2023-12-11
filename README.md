@@ -1,4 +1,4 @@
-# django-clickhouse-logger
+# clickhouse-django-logger
 
 ## Описание
 
@@ -33,6 +33,8 @@ CELERY_TASK_QUEUES = {
         'binding_key': 'logger',
     },
 }
+# Для сортировки логов например по контурам (local, development, release)
+DJANGO_CLICKHOUSE_SERVER_NAME = "release" # необяз. параметр, по умолчанию development
 ```
 Добавьте Clickhouse logger в конфигурацию логгера в settings.py:
 ```bash

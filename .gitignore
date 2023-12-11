@@ -2,3 +2,5 @@
 *.pyc
 
 setup.py
+venv
+pyproject.toml
