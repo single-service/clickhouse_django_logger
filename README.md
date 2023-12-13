@@ -21,20 +21,20 @@ INSTALLED_APPS = INSTALLED_APPS + ("clickhouse_django_logger",)
 
 Установите переменные среды для Clickhouse logger в settings.py:
 ```bash
+# Обязательные переменные
+
 DJANGO_CLICKHOUSE_LOGGER_HOST = "clickhouse"
 DJANGO_CLICKHOUSE_LOGGER_PORT = 8123
 DJANGO_CLICKHOUSE_LOGGER_USER = "default"
 DJANGO_CLICKHOUSE_LOGGER_PASSWORD = "default"
-# Для создания отдельной очереди для celery:
-CELERY_TASK_QUEUES = {
-    'logger': {
-        'exchange': 'logger',
-        'exchange_type': 'direct',
-        'binding_key': 'logger',
-    },
-}
+
+# Необязательные переменные
+
+# Для создания отдельной очереди для celery (логи будут писаться только в очереди указанной тут)
+# если переменная не указана, то будет использована стандартная очередь
+USE_LOGGER_QUEUE_NAME = "logger"
 # Для сортировки логов например по контурам (local, development, release)
-DJANGO_CLICKHOUSE_SERVER_NAME = "release" # необяз. параметр, по умолчанию development
+DJANGO_CLICKHOUSE_SERVER_NAME = "release" # по умолчанию development
 ```
 Добавьте Clickhouse logger в конфигурацию логгера в settings.py:
 ```bash

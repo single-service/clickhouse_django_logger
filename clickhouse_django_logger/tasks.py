@@ -8,8 +8,10 @@ from .config import app
 
 logger = logging.getLogger(__name__)
 
+use_logger_queue = getattr(settings, 'USE_LOGGER_QUEUE_NAME', None)
+task_decorator = app.task(queue=use_logger_queue) if use_logger_queue else app.task
 
-@app.task(queue='logger')
+@task_decorator
 def record_in_clickhouse(data, *args):
     """ Производит запись в clickhouse """
 

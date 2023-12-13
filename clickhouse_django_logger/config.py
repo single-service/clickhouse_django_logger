@@ -21,11 +21,3 @@ def check_settings():
         if not hasattr(settings, setting_name):
             raise ImproperlyConfigured(
                 f'Clickhouse-django-logger error: Missing required setting: {setting_name}')
-    if not hasattr(settings, 'CELERY_TASK_QUEUES'):
-        raise ImproperlyConfigured(
-            'Clickhouse-django-logger error: Missing required setting: CELERY_TASK_QUEUES')
-
-    task_routes = settings.CELERY_TASK_QUEUES
-    if not isinstance(task_routes, dict) or 'logger' not in task_routes:
-        raise ImproperlyConfigured(
-            'Clickhouse-django-logger error: CELERY_TASK_QUEUES must include a route for "logger".')
